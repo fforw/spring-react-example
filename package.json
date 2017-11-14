@@ -1,4 +1,13 @@
 {
+    "name": "spring-react-example",
+    "version": "0.0.1",
+    "description": "React view integration into Spring Boot/Spring WebMVC example",
+    "main": "index.js",
+    "repository": "https://github.com/fforw/spring-react-example.git",
+    "author": "Sven Helmberger",
+    "license": "MIT",
+    "private": true,
+
     "devDependencies": {
         "babel-loader": "^7.1.2",
         "babel-plugin-espower": "^2.3.2",
