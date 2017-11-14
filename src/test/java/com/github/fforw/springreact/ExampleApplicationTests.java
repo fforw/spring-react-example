@@ -1,4 +1,4 @@
-package com.github.fforw.springreactexample;
+package com.github.fforw.springreact;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,10 +7,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SpringReactExampleApplicationTests {
+public class ExampleApplicationTests
+{
 
 	@Test
-	public void contextLoads() {
+	public void contextLoads()
+	{
+
 	}
 
 }
