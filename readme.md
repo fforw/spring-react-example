@@ -54,3 +54,65 @@ That home component then gets invoked with the props resulting from the Spring v
 
 ```
 
+Project layout
+--------------
+
+The java sources are under the normal src/main/java path. JavaScript sources are under src/main/js and the main entry point is src/main/js/main.js.
+
+We use a traditional webapp layout with the static resource files in src/main/webapp since that seems to work better with resource reloading and
+webpach watch mode
+
+
+Build
+-----
+
+You can build the whole project with using maven or the included "mvnw/mvnw.cmd"
+
+### Maven
+
+```bash
+    mvn clean package
+```
+
+### MVNW
+
+On Linux/Os-X 
+
+```bash
+    ./mvnw clean package
+```
+
+or
+
+```
+    ./mvnw.cmd clean package
+```
+
+
+With a nodejs install you can also invoke the package.json scripts directly. I also used yarn for this project.
+
+
+
+```json
+{
+
+    "scripts": {
+        "build": "cross-env NODE_ENV=production webpack -p",
+        "build-dev": "cross-env NODE_ENV=development webpack --debug --output-pathinfo",
+        "watch": "cross-env NODE_ENV=development webpack --debug --output-pathinfo -w",
+        "test": "cross-env NODE_ENV=test mocha --require babel-register -R spec src/test/js/"
+    }
+}
+```
+
+`yarn run build` is the target included in the maven build and creates an uglified/optimized js bundle in the WAR file.
+`yarn run build-dev` builds a development version
+`yarn run watch` builds a development version and enters watch mode which keeps compiling changes while editing
+`yarn test` runs the javascript tests. This is also integrated into the maven test cycle.
+
+
+
+
+
+
+ 
