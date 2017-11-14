@@ -1,4 +1,5 @@
 import React from "react"
+import Footer from "../components/Footer";
 
 class Home extends React.Component {
 
@@ -13,7 +14,7 @@ class Home extends React.Component {
                     }
                 </pre>
 
-                <a className="btn btn-link" href="/another">Another</a>
+                <Footer/>
 
             </div>
         )

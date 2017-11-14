@@ -27,6 +27,10 @@ public class ReactView
 {
     private final static Logger log = LoggerFactory.getLogger(ReactView.class);
 
+    private static final String X_REQUESTED_WITH = "x-requested-With";
+
+    private static final String WHATWG_FETCH = "whatwg-fetch";
+
     private final BaseTemplate template;
 
     private final String name;
@@ -56,22 +60,66 @@ public class ReactView
     {
         final Map<String, Object> model = (Map<String, Object>) map;
 
+        // add our view name to the model
+        model.put("viewName", name);
+
+        final String json = JSON.defaultJSON().forValue(model);
+
+        if (WHATWG_FETCH.equals(request.getHeader(X_REQUESTED_WITH)))
+        {
+            response.setContentType(ContentType.JSON);
+            response.setCharacterEncoding("UTF-8");
+
+            byte[] data = json.getBytes(BaseTemplate.UTF_8);
+
+            response.setContentLength(data.length);
+
+            ServletOutputStream os = null;
+            try
+            {
+                os = response.getOutputStream();
+                os.write(data);
+                os.flush();
+            }
+            catch (IOException e)
+            {
+                IOUtils.closeQuietly(os);
+
+                // these are most commonly browser windows being closed before the last request is done
+                log.debug("Error sending JSON data", e);
+            }
+            catch (Exception e)
+            {
+                IOUtils.closeQuietly(os);
+                // these are most commonly browser windows being closed before the last request is done
+                log.error("Error sending JSON data", e);
+            }
+
+        }
+        else
+        {
+            renderTemplate(request, response, json);
+        }
+
+    }
+
+
+    private void renderTemplate(
+        HttpServletRequest request, HttpServletResponse response, String json
+    )
+    {
         response.setContentType(ContentType.HTML);
         response.setCharacterEncoding("UTF-8");
 
         ServletOutputStream os = null;
         try
         {
-
-            // add our view name to the model
-            model.put("viewName", name);
-
             // create a new model map for the template
             final Map<String, Object> templateModel = new HashMap<>();
             // containing the context path
             templateModel.put("CONTEXT_PATH", request.getContextPath());
             // and the JSON for our current spring model
-            templateModel.put("VIEW_DATA", JSON.defaultJSON().forValue(model));
+            templateModel.put("VIEW_DATA", json);
 
             // evaluate and write template
             os = response.getOutputStream();
@@ -91,6 +139,5 @@ public class ReactView
             // these are most commonly browser windows being closed before the last request is done
             log.error("Error sending view", e);
         }
-        
     }
 }

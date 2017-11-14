@@ -7,7 +7,7 @@ module.exports = {
         main: "./src/main/js/main.js"
     },
     output: {
-        path: path.join(__dirname, "src/main/resources/static/js"),
+        path: path.join(__dirname, "target/spring-react-example/js"),
         filename: "bundle-[name].js"
     },
     module: {

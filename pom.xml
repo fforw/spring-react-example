@@ -57,6 +57,7 @@
     </dependencies>
 
     <build>
+        <finalName>spring-react-example</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

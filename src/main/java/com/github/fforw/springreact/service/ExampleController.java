@@ -20,4 +20,12 @@ public class ExampleController
     {
         return "Another";
     }
+
+    @RequestMapping("/third")
+    public String showThirdView(ModelMap modelMap)
+    {
+        modelMap.addAttribute("value", Math.random());
+
+        return "Third";
+    }
 }

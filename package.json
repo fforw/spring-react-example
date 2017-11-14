@@ -13,8 +13,10 @@
     },
     "dependencies": {
         "domready": "^1.0.8",
+        "es6-promise-polyfill": "^1.2.0",
         "react": "^16.0.0",
-        "react-dom": "^16.0.0"
+        "react-dom": "^16.0.0",
+        "whatwg-fetch": "^2.0.3"
     },
     "scripts": {
         "build": "cross-env NODE_ENV=production webpack -p",
