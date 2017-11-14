@@ -1,4 +1,4 @@
-package com.github.fforw.springreact.config.util;
+package com.github.fforw.springreact.util;
 
 /**
  * Contains common content types.

@@ -1,6 +1,6 @@
 package com.github.fforw.springreact.config;
 
-import com.github.fforw.springreact.config.util.ContentType;
+import com.github.fforw.springreact.util.ContentType;
 import com.github.fforw.springreact.template.BaseTemplate;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
