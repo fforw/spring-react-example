@@ -4,7 +4,7 @@ Spring React Example
 This projects demonstrates how to integrate client-side react js and general js content into a Spring Boot/Spring WebMVC
 application.
 
- * A [Webpack/babel build](https://github.com/fforw/spring-react-example/blob/master/package.json#L22-L25) integrated 
+ * A [Webpack/babel build](https://github.com/fforw/spring-react-example/blob/master/package.json#L31-L34) integrated 
  into the [maven build](https://github.com/fforw/spring-react-example/blob/master/pom.xml#L67-L141)
  
  * A Spring view implemention for client-side react views 
